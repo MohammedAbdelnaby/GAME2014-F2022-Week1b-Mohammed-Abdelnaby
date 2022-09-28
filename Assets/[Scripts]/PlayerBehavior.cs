@@ -8,6 +8,8 @@ public class PlayerBehavior : MonoBehaviour
     public Boundray boundray;
     public float VerticalPostions;
 
+    public float HorizontalSpeed = 10.0f;
+
     private Camera camera;
 
     private void Start()
@@ -39,7 +41,8 @@ public class PlayerBehavior : MonoBehaviour
     {
         foreach (var touch in Input.touches)
         {
-            transform.position = camera.ScreenToWorldPoint(touch.position);
+            var distination = camera.ScreenToWorldPoint(touch.position);
+            transform.position = Vector2.Lerp(transform.position, distination, Time.deltaTime * HorizontalSpeed);
         }
     }
 }
