@@ -10,10 +10,4 @@ public class HelloWorld : MonoBehaviour
         Debug.Log("App Started!");
 
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

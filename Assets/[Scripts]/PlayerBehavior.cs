@@ -5,19 +5,21 @@ using UnityEngine;
 public class PlayerBehavior : MonoBehaviour
 {
     public float speed = 2.0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    public Boundray boundray;
+    public float VerticalPostions;
     // Update is called once per frame
     void Update()
     {
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
-
-        transform.position = new Vector2(transform.position.x + x * Time.deltaTime * speed
-                                       , transform.position.y + y * Time.deltaTime * speed);
+        Move();
     }
+
+    public void Move()
+    {
+        float x = Input.GetAxisRaw("Horizontal") * Time.deltaTime * speed;
+
+        transform.position += new Vector3(x, 0.0f, 0.0f);
+
+        var clampedPostion = Mathf.Clamp(transform.position.x, boundray.min, boundray.max);
+        transform.position = new Vector2(clampedPostion, VerticalPostions);
+    }   
 }
