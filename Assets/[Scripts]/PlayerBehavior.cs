@@ -7,7 +7,7 @@ public class PlayerBehavior : MonoBehaviour
     public float speed = 2.0f;
     public Boundray boundray;
     public float VerticalPostions;
-
+    public bool UsingMobileInput = false;
     public float HorizontalSpeed = 10.0f;
 
     private Camera camera;
@@ -15,12 +15,21 @@ public class PlayerBehavior : MonoBehaviour
     private void Start()
     {
         camera = Camera.main;
+
+        UsingMobileInput = Application.platform == RuntimePlatform.Android || 
+                           Application.platform == RuntimePlatform.IPhonePlayer;
     }
     // Update is called once per frame
     void Update()
     {
-        //ConventionalInput();
-        MobileInput();
+        if (UsingMobileInput)
+        {
+            MobileInput();
+        }
+        else
+        {
+            ConventionalInput();
+        }
         Move();
     }
 

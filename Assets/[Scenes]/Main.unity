@@ -433,6 +433,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7900719269046979526, guid: ee11f647d2a93e840908e345e43cea39, type: 3}
+      propertyPath: UsingMobileInput
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7900719269046979527, guid: ee11f647d2a93e840908e345e43cea39, type: 3}
       propertyPath: m_SortingLayer
       value: 2
