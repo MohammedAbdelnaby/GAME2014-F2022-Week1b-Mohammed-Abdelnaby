@@ -9,7 +9,7 @@ public class PlayerBehavior : MonoBehaviour
     public float VerticalPostions;
     public bool UsingMobileInput = false;
     public float HorizontalSpeed = 10.0f;
-
+    public ScoreManager scoreManager;
     private Camera camera;
 
     private void Start()
@@ -31,6 +31,11 @@ public class PlayerBehavior : MonoBehaviour
             ConventionalInput();
         }
         Move();
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            scoreManager.AddPoints(1);
+        }
     }
 
     public void Move()
