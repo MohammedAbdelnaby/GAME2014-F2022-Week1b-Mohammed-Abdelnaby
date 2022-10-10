@@ -11,16 +11,17 @@ public class PlayerBehavior : MonoBehaviour
     public bool UsingMobileInput = false;
     public float HorizontalSpeed = 10.0f;
     public ScoreManager scoreManager;
-    private Camera camera;
 
     [Header("Bullet Properties")]
     public Transform BulletSpawnPoint;
-    public GameObject BulletPrefab;
     public float FireRate;
-    public Transform BulletParent;
+    public BulletManager bulletManager;
+
+    private Camera camera;
 
     private void Start()
     {
+        bulletManager = FindObjectOfType<BulletManager>();
         camera = Camera.main;
 
         UsingMobileInput = Application.platform == RuntimePlatform.Android || 
@@ -71,6 +72,6 @@ public class PlayerBehavior : MonoBehaviour
 
     void FireBullet()
     {
-        var bullet = Instantiate(BulletPrefab, BulletSpawnPoint.position, Quaternion.identity, BulletParent);
+        var bullet = bulletManager.GetBullet(BulletSpawnPoint.position, BulletDirection.UP);
     }
 }

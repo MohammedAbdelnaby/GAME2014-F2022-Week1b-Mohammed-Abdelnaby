@@ -17,6 +17,7 @@ public class BulletManager : MonoBehaviour
     void Start()
     {
         BulletPool = new Queue<GameObject>();
+        BuildBulletPool();
     }
 
     // Update is called once per frame
@@ -31,6 +32,7 @@ public class BulletManager : MonoBehaviour
         {
             CreateBullet();
         }
+        BulletCount = BulletPool.Count;
     }
 
     public GameObject GetBullet(Vector2 postion, BulletDirection direction)

@@ -14,12 +14,14 @@ public class BulletBehavior : MonoBehaviour
     public BulletDirection BulletDirection;
     public float speed;
     public ScreenBounds bounds;
+    public BulletManager bulletManager;
 
     private Vector3 Velocity;
 
     // Start is called before the first frame update
     void Start()
     {
+        bulletManager = FindObjectOfType<BulletManager>();
         SetDirection(BulletDirection);
     }
 
@@ -42,13 +44,13 @@ public class BulletBehavior : MonoBehaviour
             (transform.position.y > bounds.vertical.max)   ||
             (transform.position.x < bounds.vertical.min))
         {
-            Destroy(this.gameObject);
+            bulletManager.ReturnBullet(this.gameObject);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(this.gameObject);
+        bulletManager.ReturnBullet(this.gameObject);
     }
 
 
