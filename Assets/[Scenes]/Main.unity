@@ -175,6 +175,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 6608846571895524796, guid: 636b7668cb602904b8dbec70d2025dbe, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6608846571895524796, guid: 636b7668cb602904b8dbec70d2025dbe, type: 3}
+      propertyPath: m_FlipY
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6608846571895524797, guid: 636b7668cb602904b8dbec70d2025dbe, type: 3}
       propertyPath: boundray.max
       value: 9
@@ -288,6 +296,37 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &481177735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 481177736}
+  m_Layer: 0
+  m_Name: Bullets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &481177736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481177735}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.042472772, y: -1.9038342, z: -12.847432}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,21 +808,13 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7900719269046979526, guid: ee11f647d2a93e840908e345e43cea39, type: 3}
+      propertyPath: BulletParent
+      value: 
+      objectReference: {fileID: 481177736}
+    - target: {fileID: 7900719269046979526, guid: ee11f647d2a93e840908e345e43cea39, type: 3}
       propertyPath: scoreManager
       value: 
       objectReference: {fileID: 1806984140}
-    - target: {fileID: 7900719269046979526, guid: ee11f647d2a93e840908e345e43cea39, type: 3}
-      propertyPath: UsingMobileInput
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7900719269046979527, guid: ee11f647d2a93e840908e345e43cea39, type: 3}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7900719269046979527, guid: ee11f647d2a93e840908e345e43cea39, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -1689160445
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: ee11f647d2a93e840908e345e43cea39, type: 3}
