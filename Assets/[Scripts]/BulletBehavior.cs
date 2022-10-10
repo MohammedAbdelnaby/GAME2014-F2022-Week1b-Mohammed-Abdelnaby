@@ -11,31 +11,16 @@ public struct ScreenBounds
 
 public class BulletBehavior : MonoBehaviour
 {
-    public BulletDirection direction;
+    public BulletDirection BulletDirection;
     public float speed;
-    public Vector3 Velocity;
     public ScreenBounds bounds;
+
+    private Vector3 Velocity;
 
     // Start is called before the first frame update
     void Start()
     {
-        switch (direction)
-        {
-            case BulletDirection.UP:
-                Velocity = Vector3.up * speed;
-                break;
-            case BulletDirection.RIGHT:
-                Velocity = Vector3.right * speed;
-                break;
-            case BulletDirection.DOWN:
-                Velocity = Vector3.down * speed;
-                break;
-            case BulletDirection.LEFT:
-                Velocity = Vector3.left * speed;
-                break;
-            default:
-                break;
-        }
+        SetDirection(BulletDirection);
     }
 
     // Update is called once per frame
@@ -64,5 +49,27 @@ public class BulletBehavior : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Destroy(this.gameObject);
+    }
+
+
+    public void SetDirection(BulletDirection direction)
+    {
+        switch (BulletDirection)
+        {
+            case BulletDirection.UP:
+                Velocity = Vector3.up * speed;
+                break;
+            case BulletDirection.RIGHT:
+                Velocity = Vector3.right * speed;
+                break;
+            case BulletDirection.DOWN:
+                Velocity = Vector3.down * speed;
+                break;
+            case BulletDirection.LEFT:
+                Velocity = Vector3.left * speed;
+                break;
+            default:
+                break;
+        }
     }
 }
