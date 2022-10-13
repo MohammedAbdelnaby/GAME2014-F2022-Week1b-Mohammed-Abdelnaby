@@ -15,6 +15,7 @@ public class BulletBehavior : MonoBehaviour
     public float speed;
     public ScreenBounds bounds;
     public BulletManager bulletManager;
+    public BulletType type;
 
     private Vector3 Velocity;
 
@@ -22,7 +23,6 @@ public class BulletBehavior : MonoBehaviour
     void Start()
     {
         bulletManager = FindObjectOfType<BulletManager>();
-        SetDirection(BulletDirection);
     }
 
     // Update is called once per frame
@@ -42,21 +42,21 @@ public class BulletBehavior : MonoBehaviour
         if ((transform.position.x > bounds.horizontal.max) ||
             (transform.position.x < bounds.horizontal.min) ||
             (transform.position.y > bounds.vertical.max)   ||
-            (transform.position.x < bounds.vertical.min))
+            (transform.position.y < bounds.vertical.min))
         {
-            bulletManager.ReturnBullet(this.gameObject);
+            bulletManager.ReturnBullet(this.gameObject, type);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        bulletManager.ReturnBullet(this.gameObject);
+        
     }
 
 
     public void SetDirection(BulletDirection direction)
     {
-        switch (BulletDirection)
+        switch (direction)
         {
             case BulletDirection.UP:
                 Velocity = Vector3.up * speed;

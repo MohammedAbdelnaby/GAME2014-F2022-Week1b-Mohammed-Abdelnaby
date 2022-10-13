@@ -23,29 +23,34 @@ public class BulletFactory : MonoBehaviour
     {
         PlayerBulletSprite = Resources.Load<Sprite>("Sprite/Bullet");
         EnemyBulletSprite = Resources.Load<Sprite>("Sprite/EnemySmallBullet");
-        BulletPrefab = Resources.Load<GameObject>("Prefabs/PlayerBullet");
+        BulletPrefab = Resources.Load<GameObject>("Prefabs/Bullet");
         BulletParent = GameObject.Find("Bullets").transform;
     }
 
     public GameObject CreateBullet(BulletType type)
     {
-        GameObject bullet = Instantiate(BulletPrefab, Vector3.zero, Quaternion.identity, BulletParent); ;
+        GameObject bullet = Instantiate(BulletPrefab, Vector3.zero, Quaternion.identity, BulletParent);
+        bullet.GetComponent<BulletBehavior>().type = type;
 
         switch (type)
         {
             case BulletType.ENEMY:
-                bullet.GetComponent<SpriteRenderer>().sprite = EnemyBulletSprite;
-                bullet.GetComponent<BulletBehavior>().SetDirection(BulletDirection.DOWN);
+                {
+                    bullet.GetComponent<SpriteRenderer>().sprite = EnemyBulletSprite;
+                    bullet.GetComponent<BulletBehavior>().SetDirection(BulletDirection.DOWN);
+                    bullet.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
+                    bullet.name = "EnemyBullet";
+                }
                 break;
             case BulletType.PLAYER:
-                bullet.GetComponent<SpriteRenderer>().sprite = PlayerBulletSprite;
-                bullet.GetComponent<BulletBehavior>().SetDirection(BulletDirection.UP);
-                bullet.transform.localRotation = Quaternion.Euler(0.0f, 0.0f, 180.0f);
-                break;
-            default:
+                {
+                    bullet.GetComponent<SpriteRenderer>().sprite = PlayerBulletSprite;
+                    bullet.GetComponent<BulletBehavior>().SetDirection(BulletDirection.UP);
+                    bullet.name = "PlayerBullet";
+                }
                 break;
         }
-        bullet.SetActive(true);
+        bullet.SetActive(false);
         return bullet;
     }
 }
