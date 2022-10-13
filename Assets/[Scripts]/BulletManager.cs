@@ -20,12 +20,6 @@ public class BulletManager : MonoBehaviour
         BuildBulletPool();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void BuildBulletPool()
     {
         for (int i = 0; i < BulletNumber; i++)
