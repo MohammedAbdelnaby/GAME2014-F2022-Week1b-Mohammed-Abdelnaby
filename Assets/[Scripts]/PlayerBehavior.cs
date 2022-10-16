@@ -2,25 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBehavior : MonoBehaviour
+[System.Serializable]
+public class PlayerBehavior : Ship
 {
     [Header("Player Properties")]
-    public float speed = 2.0f;
-    public Boundray boundray;
     public float VerticalPostions;
-    public float HorizontalSpeed = 10.0f;
-    public ScoreManager scoreManager;
-
-    [Header("Bullet Properties")]
-    public Transform BulletSpawnPoint;
-    public float FireRate;
-
 
     private bool UsingMobileInput = false;
+    private ScoreManager scoreManager;
     private Camera camera;
-    private BulletManager bulletManager;
     private void Start()
     {
+        speed = 10.0f;
+        ScreenBoundray.min = -1.9f;
+        ScreenBoundray.max = 1.9f;
+        FireRate = 0.1f;
+        BulletSpawnPoint = transform.Find("BulletSpawnPoint");
+        scoreManager = FindObjectOfType<ScoreManager>();
         bulletManager = FindObjectOfType<BulletManager>();
         camera = Camera.main;
 
@@ -48,11 +46,15 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
-    public void Move()
+    protected override void Move()
     {
-        var clampedPostion = Mathf.Clamp(transform.position.x, boundray.min, boundray.max);
+        var clampedPostion = Mathf.Clamp(transform.position.x, ScreenBoundray.min, ScreenBoundray.max);
         transform.position = new Vector2(clampedPostion, VerticalPostions);
-    }   
+    }
+
+    protected override void CheckBounds()
+    { 
+    }
 
     public void ConventionalInput()
     {
@@ -66,11 +68,11 @@ public class PlayerBehavior : MonoBehaviour
         foreach (var touch in Input.touches)
         {
             var distination = camera.ScreenToWorldPoint(touch.position);
-            transform.position = Vector2.Lerp(transform.position, distination, Time.deltaTime * HorizontalSpeed);
+            transform.position = Vector2.Lerp(transform.position, distination, Time.deltaTime * speed);
         }
     }
 
-    void FireBullet()
+    protected override void FireBullet()
     {
         var bullet = bulletManager.GetBullet(BulletSpawnPoint.position, BulletType.PLAYER);
     }

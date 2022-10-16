@@ -2,30 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enenymbehaviour : MonoBehaviour
+public class Enenymbehaviour : Ship
 {
-    public Boundray horizontalSpeedRange;
-    public Boundray verticalSpeedRange;
     public Boundray horizontalBoundray;
-    public Boundray screenBounds;
     public Boundray verticalBoundray;
-    public float VerticalSpeed;
-    public Color RandomColor;
 
-    [Header("Bullet Properties")]
-    public Transform BulletSpawnPoint;
-    public float FireRate;
-
+    private Boundray horizontalSpeedRange;
+    private Boundray verticalSpeedRange;
+    private float VerticalSpeed;
+    private Color RandomColor;
     private SpriteRenderer spriteRenderer;
-    private BulletManager bulletManager;
     private float horizontalSpeed;
     // Start is called before the first frame update
     void Start()
     {
+        FireRate = 0.2f;
+        ScreenBoundray.min = -6.0f;
+        BulletSpawnPoint = transform.Find("BulletSpawnPoint");
         bulletManager = FindObjectOfType<BulletManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         ResetShip();
-        InvokeRepeating("eFireBullet", 0.0f, FireRate);
+        InvokeRepeating("FireBullet", 0.0f, FireRate);
     }
 
     // Update is called once per frame
@@ -35,7 +32,7 @@ public class Enenymbehaviour : MonoBehaviour
         CheckBounds();
     }
 
-    private void Move()
+    protected override void Move()
     {
         float horizontalLength = horizontalBoundray.max - horizontalBoundray.min;
         transform.position = new Vector3(Mathf.PingPong(Time.time * horizontalSpeed, horizontalLength) - horizontalBoundray.max,
@@ -43,9 +40,9 @@ public class Enenymbehaviour : MonoBehaviour
                                          transform.position.z);
     }
 
-    public void CheckBounds()
+    protected override void CheckBounds()
     {
-        if (transform.position.y < screenBounds.min)
+        if (transform.position.y < ScreenBoundray.min)
         {
             ResetShip();
         }
@@ -68,7 +65,7 @@ public class Enenymbehaviour : MonoBehaviour
         spriteRenderer.material.SetColor("_Color", RandomColor);
     }
 
-    void eFireBullet()
+    protected override void FireBullet()
     {
         var bullet = bulletManager.GetBullet(BulletSpawnPoint.position, BulletType.ENEMY);
     }

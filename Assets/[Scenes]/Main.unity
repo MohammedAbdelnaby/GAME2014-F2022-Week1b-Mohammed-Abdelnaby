@@ -689,7 +689,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreLabel: {fileID: 885445826}
-  score: 0
 --- !u!114 &1806984141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -720,10 +719,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 007fb7db7247d8541a0d12af08fe84f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 0}
-  PlayerBulletSprite: {fileID: 0}
-  EnemyBulletSprite: {fileID: 0}
-  BulletParent: {fileID: 0}
 --- !u!1001 &6608846571583866651
 PrefabInstance:
   m_ObjectHideFlags: 0

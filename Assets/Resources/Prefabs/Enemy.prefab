@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2458733514570782993}
   m_Layer: 0
-  m_Name: SpawnPoint
+  m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,7 +150,7 @@ Transform:
   - {fileID: 837402614}
   - {fileID: 2458733514570782993}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5340973688290317579
 SpriteRenderer:
@@ -216,27 +216,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 504b62fd6a55ec94eb98e2dc77a9d50a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  horizontalSpeedRange:
-    min: 0
-    max: 0
-  verticalSpeedRange:
-    min: 0
-    max: 0
   horizontalBoundray:
     min: -2
     max: 2
-  screenBounds:
-    min: -8.5
-    max: 8.5
   verticalBoundray:
     min: 5.5
     max: 8.5
-  VerticalSpeed: 0
-  spriteRenderer: {fileID: 0}
-  RandomColor: {r: 0, g: 0, b: 0, a: 0}
-  BulletSpawnPoint: {fileID: 2458733514570782993}
-  FireRate: 0.2
-  bulletManager: {fileID: 0}
 --- !u!50 &2094090053385086831
 Rigidbody2D:
   serializedVersion: 4
