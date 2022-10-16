@@ -50,7 +50,10 @@ public class BulletBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if ((type == BulletType.PLAYER) || (type == BulletType.ENEMY && collision.gameObject.CompareTag("Player")))
+        {
+            bulletManager.ReturnBullet(this.gameObject, type);
+        }
     }
 
 

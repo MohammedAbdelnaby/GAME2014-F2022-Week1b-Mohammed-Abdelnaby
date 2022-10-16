@@ -702,10 +702,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: caaa5c811266f3542bc2e02e573727f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerBulletNumber: 50
+  PlayerBulletNumber: 25
   PlayerBulletCount: 0
   PlayerActiveBullets: 0
-  EnemyBulletNumber: 50
+  EnemyBulletNumber: 35
   EnemyBulletCount: 0
   EnemyActiveBullets: 0
 --- !u!114 &1806984142
@@ -843,14 +843,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7900719269046979526, guid: ee11f647d2a93e840908e345e43cea39, type: 3}
-      propertyPath: FireRate
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7900719269046979526, guid: ee11f647d2a93e840908e345e43cea39, type: 3}
-      propertyPath: BulletParent
-      value: 
-      objectReference: {fileID: 481177736}
     - target: {fileID: 7900719269046979526, guid: ee11f647d2a93e840908e345e43cea39, type: 3}
       propertyPath: scoreManager
       value: 

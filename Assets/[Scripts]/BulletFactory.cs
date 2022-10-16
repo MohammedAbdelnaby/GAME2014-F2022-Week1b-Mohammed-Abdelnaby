@@ -14,7 +14,7 @@ public class BulletFactory : MonoBehaviour
     public Transform BulletParent;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Initialize();
     }
