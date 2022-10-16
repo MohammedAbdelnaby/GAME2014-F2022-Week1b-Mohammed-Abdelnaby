@@ -9,15 +9,16 @@ public class Enenymbehaviour : MonoBehaviour
     public Boundray horizontalBoundray;
     public Boundray screenBounds;
     public Boundray verticalBoundray;
-    private float horizontalSpeed;
     public float VerticalSpeed;
-    public SpriteRenderer spriteRenderer;
     public Color RandomColor;
 
     [Header("Bullet Properties")]
     public Transform BulletSpawnPoint;
     public float FireRate;
-    public BulletManager bulletManager;
+
+    private SpriteRenderer spriteRenderer;
+    private BulletManager bulletManager;
+    private float horizontalSpeed;
     // Start is called before the first frame update
     void Start()
     {

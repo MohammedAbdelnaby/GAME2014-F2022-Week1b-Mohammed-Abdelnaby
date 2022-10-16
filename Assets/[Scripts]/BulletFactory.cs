@@ -5,13 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class BulletFactory : MonoBehaviour
 {
-    public GameObject BulletPrefab;
-
-    public Sprite PlayerBulletSprite;
-    public Sprite EnemyBulletSprite;
-
-
-    public Transform BulletParent;
+    private GameObject BulletPrefab;
+    private Sprite PlayerBulletSprite;
+    private Sprite EnemyBulletSprite;
+    private Transform BulletParent;
 
     // Start is called before the first frame update
     void Awake()

@@ -8,17 +8,17 @@ public class PlayerBehavior : MonoBehaviour
     public float speed = 2.0f;
     public Boundray boundray;
     public float VerticalPostions;
-    public bool UsingMobileInput = false;
     public float HorizontalSpeed = 10.0f;
     public ScoreManager scoreManager;
 
     [Header("Bullet Properties")]
     public Transform BulletSpawnPoint;
     public float FireRate;
-    public BulletManager bulletManager;
 
+
+    private bool UsingMobileInput = false;
     private Camera camera;
-
+    private BulletManager bulletManager;
     private void Start()
     {
         bulletManager = FindObjectOfType<BulletManager>();
